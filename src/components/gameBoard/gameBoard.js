@@ -3,7 +3,6 @@ import { GameContext } from '../../../src/Context/Context';
 import './gameBoard.css';
 
 export default function GameBoard() {
-  //code
   const { board, playFn } = useContext(GameContext);
   return (
     <div className="container">

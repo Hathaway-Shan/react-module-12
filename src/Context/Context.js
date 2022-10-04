@@ -1,16 +1,16 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { createContext, useState } from 'react';
 
 const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
-  const [board, setBoard] = useContext([
+  const [board, setBoard] = useState([
     ['', '', ''],
     ['', '', ''],
     ['', '', ''],
   ]);
-  const [isCPUNext, setIsCPUNext] = useContext(false);
-  const [winner, setWinner] = useContext(null);
+  const [isCPUNext, setIsCPUNext] = useState(false);
+  const [winner, setWinner] = useState(null);
 
   const playFn = (arrayIndex, index) => {
     //function body here
