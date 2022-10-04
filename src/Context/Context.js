@@ -12,6 +12,10 @@ const GameProvider = ({ children }) => {
   const [isCPUNext, setIsCPUNext] = useContext(false);
   const [winner, setWinner] = useContext(null);
 
+  const playFn = (arrayIndex, index) => {
+    //function body here
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -21,6 +25,7 @@ const GameProvider = ({ children }) => {
         setIsCPUNext,
         winner,
         setWinner,
+        playFn,
       }}
     >
       {children}
