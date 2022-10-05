@@ -4,11 +4,17 @@ import './App.css';
 import GameBoard from './components/gameBoard/gameBoard';
 
 function App() {
-  const { board, setBoard, isCPUNext, setIsCPUNext, winner, setWinner, playFn } =
-    useContext(GameContext);
+  const { board, setBoard, handleClick, player, setPlayer, activePlayer } = useContext(GameContext);
   return (
     <div className="main">
-      <GameBoard />
+      <GameBoard
+        board={board}
+        setBoard={setBoard}
+        handleClick={handleClick}
+        player={player}
+        setPlayer={setPlayer}
+        activePlayer={activePlayer}
+      />
     </div>
   );
 }

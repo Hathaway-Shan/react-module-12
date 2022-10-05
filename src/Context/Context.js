@@ -1,19 +1,41 @@
 // import { useContext } from 'react';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
+  const players = {
+    X: {
+      symbol: 'X',
+    },
+    O: {
+      symbol: 'O',
+    },
+  };
+
   const [board, setBoard] = useState([
     ['', '', ''],
     ['', '', ''],
     ['', '', ''],
   ]);
-  const [isCPUNext, setIsCPUNext] = useState(false);
+
+  const [player, setPlayer] = useState('X');
   const [winner, setWinner] = useState(null);
 
-  const playFn = (arrayIndex, index) => {
-    //function body here
+  const activePlayer = () => {
+    player === 'X' ? setPlayer('O') : setPlayer('X');
+  };
+
+  //click handler function
+  const handleClick = (arrayIndex, index) => {
+    if (player === 'X') {
+      board[arrayIndex][index] = players.X.symbol;
+    }
+    if (player === 'O') {
+      board[arrayIndex][index] = players.O.symbol;
+    }
+    setBoard((board) => [...board]);
+    activePlayer();
   };
 
   return (
@@ -21,11 +43,12 @@ const GameProvider = ({ children }) => {
       value={{
         board,
         setBoard,
-        isCPUNext,
-        setIsCPUNext,
+        player,
+        setPlayer,
         winner,
         setWinner,
-        playFn,
+        handleClick,
+        activePlayer,
       }}
     >
       {children}
