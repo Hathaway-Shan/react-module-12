@@ -28,6 +28,10 @@ const GameProvider = ({ children }) => {
 
   //click handler function
   const handleClick = (arrayIndex, index) => {
+    if (board[arrayIndex][index] !== '') {
+      console.log(`${arrayIndex}, ${index} is not a valid move`);
+      return;
+    }
     if (player === 'X') {
       board[arrayIndex][index] = players.X.symbol;
     }
