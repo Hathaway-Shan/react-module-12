@@ -13,6 +13,14 @@ export default function HUD() {
     );
   }
 
+  if (winner === 'draw') {
+    return (
+      <div className="HUD-wrapper">
+        <span className="HUD-display">Drawn Game! Better luck next time.</span>
+      </div>
+    );
+  }
+
   if (winner) {
     return (
       <div className="HUD-wrapper">

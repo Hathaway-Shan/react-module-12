@@ -33,14 +33,11 @@ const GameProvider = ({ children }) => {
     for (let index = 0; index < board.length; index++) {
       const row = board[index];
       if (row.every((cell) => cell === players.X.symbol)) {
-        //set winner
         setWinner(players.X.symbol);
-        console.log('row winner state is:', winner);
         return;
       }
       if (row.every((cell) => cell === players.O.symbol)) {
         setWinner(players.O.symbol);
-        console.log('row winner state is:', winner);
         return;
       }
     }
@@ -49,12 +46,10 @@ const GameProvider = ({ children }) => {
       const column = board.map((row) => row[i]);
       if (column.every((cell) => cell === players.X.symbol)) {
         setWinner(players.X.symbol);
-        console.log('column winner state is:', winner);
         return;
       }
       if (column.every((cell) => cell === players.O.symbol)) {
         setWinner(players.O.symbol);
-        console.log('column winner state is:', winner);
         return;
       }
     }
@@ -63,21 +58,22 @@ const GameProvider = ({ children }) => {
     const secondDiagonal = [board[0][2], board[1][1], board[2][0]];
     if (firstDiagonal.every((cell) => cell === players.X.symbol)) {
       setWinner(players.X.symbol);
-      console.log('firstDiagonal winner state is:', winner);
       return;
     }
     if (firstDiagonal.every((cell) => cell === players.O.symbol)) {
       setWinner(players.O.symbol);
-      console.log('firstDiagonal winner state is:', winner);
       return;
     }
     if (secondDiagonal.every((cell) => cell === players.X.symbol)) {
       setWinner(players.X.symbol);
-      console.log('secondDiagonal winner state is: ', winner);
     }
     if (secondDiagonal.every((cell) => cell === players.O.symbol)) {
       setWinner(players.O.symbol);
-      console.log('secondDiagonal winner state is: ', winner);
+    }
+    //check for draws
+    if (board.flat().every((cell) => cell !== '')) {
+      setWinner('draw');
+      return;
     }
   };
 
