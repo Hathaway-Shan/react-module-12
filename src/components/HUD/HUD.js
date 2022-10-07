@@ -3,12 +3,21 @@ import { GameContext } from '../../Context/Context';
 import './HUD.css';
 
 export default function HUD() {
-  const { player } = useContext(GameContext);
+  const { player, winner } = useContext(GameContext);
 
-  return (
-    //add conditional line to change display if winner is true
-    <div className="HUD-wrapper">
-      <span className="HUD-display">Active Player is {player}</span>
-    </div>
-  );
+  if (!winner) {
+    return (
+      <div className="HUD-wrapper">
+        <span className="HUD-display">Active Player is {player}</span>
+      </div>
+    );
+  }
+
+  if (winner) {
+    return (
+      <div className="HUD-wrapper">
+        <span className="HUD-display">{winner} Wins! Well Played...</span>
+      </div>
+    );
+  }
 }

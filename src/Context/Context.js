@@ -21,15 +21,48 @@ const GameProvider = ({ children }) => {
 
   const [player, setPlayer] = useState('X');
   const [winner, setWinner] = useState(null);
+  // const [draw, setDraw] = useState(null);
 
   const activePlayer = () => {
     player === 'X' ? setPlayer('O') : setPlayer('X');
   };
 
+  //check winner function
+  const checkWinner = () => {
+    //check rows
+    for (let index = 0; index < board.length; index++) {
+      const row = board[index];
+      if (row.every((cell) => cell === players.X.symbol)) {
+        //set winner
+        setWinner(players.X.symbol);
+        console.log('row winner state is:', winner);
+        return;
+      }
+      if (row.every((cell) => cell === players.O.symbol)) {
+        setWinner(players.O.symbol);
+        console.log('row winner state is:', winner);
+        return;
+      }
+    }
+    //check columns
+    for (let i = 0; i < 3; i++) {
+      const column = board.map((row) => row[i]);
+      if (column.every((cell) => cell === players.X.symbol)) {
+        setWinner(players.X.symbol);
+        console.log('column winner state is:', winner);
+        return;
+      }
+      if (column.every((cell) => cell === players.O.symbol)) {
+        setWinner(players.O.symbol);
+        console.log('column winner state is:', winner);
+        return;
+      }
+    }
+  };
+
   //click handler function
   const handleClick = (arrayIndex, index) => {
     if (board[arrayIndex][index] !== '') {
-      console.log(`${arrayIndex}, ${index} is not a valid move`);
       return;
     }
     if (player === 'X') {
@@ -39,6 +72,7 @@ const GameProvider = ({ children }) => {
       board[arrayIndex][index] = players.O.symbol;
     }
     setBoard((board) => [...board]);
+    checkWinner();
     activePlayer();
   };
 
