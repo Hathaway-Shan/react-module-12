@@ -58,6 +58,27 @@ const GameProvider = ({ children }) => {
         return;
       }
     }
+    //check diagonals starting with 0
+    const firstDiagonal = [board[0][0], board[1][1], board[2][2]];
+    const secondDiagonal = [board[0][2], board[1][1], board[2][0]];
+    if (firstDiagonal.every((cell) => cell === players.X.symbol)) {
+      setWinner(players.X.symbol);
+      console.log('firstDiagonal winner state is:', winner);
+      return;
+    }
+    if (firstDiagonal.every((cell) => cell === players.O.symbol)) {
+      setWinner(players.O.symbol);
+      console.log('firstDiagonal winner state is:', winner);
+      return;
+    }
+    if (secondDiagonal.every((cell) => cell === players.X.symbol)) {
+      setWinner(players.X.symbol);
+      console.log('secondDiagonal winner state is: ', winner);
+    }
+    if (secondDiagonal.every((cell) => cell === players.O.symbol)) {
+      setWinner(players.O.symbol);
+      console.log('secondDiagonal winner state is: ', winner);
+    }
   };
 
   //click handler function
@@ -71,6 +92,7 @@ const GameProvider = ({ children }) => {
     if (player === 'O') {
       board[arrayIndex][index] = players.O.symbol;
     }
+
     setBoard((board) => [...board]);
     checkWinner();
     activePlayer();
