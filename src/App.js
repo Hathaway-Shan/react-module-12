@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { GameContext } from '../src/Context/Context';
 import './App.css';
-import GameBoard from './components/gameBoard/GameBoard';
+import GameBoard from './components/gameBoard/gameBoard';
 import HUD from './components/HUD/HUD';
 
 function App() {
