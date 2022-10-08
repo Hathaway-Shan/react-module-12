@@ -1,0 +1,29 @@
+.HUD-wrapper {
+  margin: 20px;
+}
+
+.HUD-display {
+  margin: 20px;
+  font-weight: bold;
+}
+
+.resetButton {
+  background-color: #ddd;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 20px 32px;
+  position: sticky;
+  border-radius: 5px;
+  display: inline-block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.resetButton:hover {
+  background-color: #3e8e41;
+  color: white;
+}
