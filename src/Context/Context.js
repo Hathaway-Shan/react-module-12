@@ -1,4 +1,3 @@
-// import { useContext } from 'react';
 import { createContext, useState } from 'react';
 
 const GameContext = createContext();
@@ -78,6 +77,15 @@ const GameProvider = ({ children }) => {
 
   //click handler function
   const handleClick = (arrayIndex, index) => {
+    if (winner === players.X.symbol) {
+      return;
+    }
+    if (winner === players.O.symbol) {
+      return;
+    }
+    if (winner === 'draw') {
+      return;
+    }
     if (board[arrayIndex][index] !== '') {
       return;
     }

@@ -17,6 +17,10 @@ export default function HUD() {
     return (
       <div className="HUD-wrapper">
         <span className="HUD-display">Drawn Game! Better luck next time.</span>
+
+        <button className="resetButton" onClick={newGame}>
+          Play Again
+        </button>
       </div>
     );
   }
@@ -25,11 +29,10 @@ export default function HUD() {
     return (
       <div className="HUD-wrapper">
         <span className="HUD-display">{winner} Wins! Well Played...</span>
-        <div className="buttonWrapper">
-          <button className="resetButton" onClick={newGame}>
-            Play Again
-          </button>
-        </div>
+
+        <button className="resetButton" onClick={newGame}>
+          Play Again
+        </button>
       </div>
     );
   }

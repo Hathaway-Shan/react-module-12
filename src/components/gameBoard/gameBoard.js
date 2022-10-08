@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { GameContext } from '../../../src/Context/Context';
-import './gameBoard.css';
+import { GameContext } from '../../Context/Context';
+import './GameBoard.css';
 
 export default function GameBoard() {
   const { board, handleClick } = useContext(GameContext);
