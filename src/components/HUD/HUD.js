@@ -3,7 +3,7 @@ import { GameContext } from '../../Context/Context';
 import './HUD.css';
 
 export default function HUD() {
-  const { player, winner } = useContext(GameContext);
+  const { player, winner, newGame } = useContext(GameContext);
 
   if (!winner) {
     return (
@@ -25,6 +25,11 @@ export default function HUD() {
     return (
       <div className="HUD-wrapper">
         <span className="HUD-display">{winner} Wins! Well Played...</span>
+        <div className="buttonWrapper">
+          <button className="resetButton" onClick={newGame}>
+            Play Again
+          </button>
+        </div>
       </div>
     );
   }

@@ -21,7 +21,6 @@ const GameProvider = ({ children }) => {
 
   const [player, setPlayer] = useState('X');
   const [winner, setWinner] = useState(null);
-  // const [draw, setDraw] = useState(null);
 
   const activePlayer = () => {
     player === 'X' ? setPlayer('O') : setPlayer('X');
@@ -53,7 +52,7 @@ const GameProvider = ({ children }) => {
         return;
       }
     }
-    //check diagonals starting with 0
+    //check diagonals starting with array 0
     const firstDiagonal = [board[0][0], board[1][1], board[2][2]];
     const secondDiagonal = [board[0][2], board[1][1], board[2][0]];
     if (firstDiagonal.every((cell) => cell === players.X.symbol)) {
@@ -94,6 +93,17 @@ const GameProvider = ({ children }) => {
     activePlayer();
   };
 
+  const newGame = () => {
+    //reset state for new game
+    setBoard([
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+    ]);
+    setWinner(null);
+    setPlayer('X');
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -105,6 +115,7 @@ const GameProvider = ({ children }) => {
         setWinner,
         handleClick,
         activePlayer,
+        newGame,
       }}
     >
       {children}
